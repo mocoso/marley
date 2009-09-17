@@ -1,3 +1,6 @@
+*NOTES ABOUT THIS VERSION*
+I simply brough +config.ru+ and +marley.rb+ out of their folders so Heroku can recognize this as a sinatra app. Additionally, I created a +config/database.yml+ file and told Marley to look there for database settings. I also modified the default 'data' folder settings to create it within the current directory. 
+
 = Marley
 
 *Marley* is minimal blog engine without admin interface written in Sinatra framework (http://sinatra.rubyforge.org).

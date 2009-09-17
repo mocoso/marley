@@ -11,7 +11,7 @@ admin:
   password: 'admin'
 
 # Set this relatively to application main ("marley") directory
-data_directory: "../data"
+data_directory: "data"
 
 # Set this to your own theme in "themes" directory
 # theme: "{REPLACE WITH THEME NAME}"
