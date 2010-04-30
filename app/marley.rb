@@ -29,7 +29,8 @@ configure :test do
   module Marley
     class Configuration
       @@config.data_directory = File.join(File.dirname(__FILE__), 'test', 'fixtures')
-      @@config.theme = 'default' # We have to run on default theme in tests
+      @@config.theme = 'default'            # We have to run on default theme in tests
+      @@config.post_file_extension = 'txt'  # Ensure extension is txt to match test fixtures
       @@theme = Theme.new(@@config)
     end
   end

@@ -50,8 +50,9 @@ module Marley
 
       # Load configuration form YAML
       def load
+        default_config = { 'post_file_extension' => 'txt'}
         raw_config = YAML.load_file( File.join(MARLEY_ROOT, 'config', 'config.yml') )
-        @@config   = nested_hash_to_openstruct(raw_config)
+        @@config   = nested_hash_to_openstruct(default_config.merge(raw_config))
         @@theme   = Theme.new(@@config)
       end
 
