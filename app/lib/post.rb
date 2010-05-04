@@ -110,7 +110,7 @@ module Marley
     end
     
     def self.regexp
-      { :id    => /^\d{0,4}-{0,1}(.*)$/,
+      { :id    => /^\d*-{0,1}(.*)$/,
         :title => /^#\s*(.*)\s+$/,
         :title_with_date => /^#\s*(.*)\s+\(([0-9\/]+)\)$/,
         :published_on => /.*\s+\(([0-9\/]+)\)$/,
