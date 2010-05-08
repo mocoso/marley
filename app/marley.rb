@@ -24,6 +24,21 @@ comment
 
 # -----------------------------------------------------------------------------
 
+configure :test do
+  # Redefine configuration for tests
+  module Marley
+    class Configuration
+      @@config.data_directory = File.join(File.dirname(__FILE__), 'test', 'fixtures')
+      @@config.theme = 'default' # We have to run on default theme in tests
+      @@theme = Theme.new(@@config)
+    end
+  end
+
+  # Remove old comments table so we can start from resh
+  comments_database = File.join(Marley::Configuration.data_directory, 'comments.db')
+  File.delete(comments_database) if File.exists?(comments_database)
+end
+
 configure do
   # Establish database connection
   ActiveRecord::Base.establish_connection(
@@ -33,9 +48,7 @@ configure do
   # Set paths to views and public
   set :views  => Marley::Configuration.theme.views.to_s
   set :public => Marley::Configuration.theme.public.to_s
-end
 
-configure :development, :production do
   # Create database and schema for comments if not present
   unless Marley::Comment.table_exists?
     puts "* Creating comments SQLite database in #{Marley::Configuration.data_directory}/comments.db"
