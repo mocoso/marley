@@ -11,6 +11,7 @@ xml.feed :'xml:lang' => 'en-US', :xmlns => 'http://www.w3.org/2005/Atom' do
       entry.id "http://#{hostname}/#{post.id}.html"
       entry.link :type => 'text/html', :href => "http://#{hostname}/#{post.id}.html", :rel => 'alternate'
       entry.updated rfc_date(post.updated_on)
+      entry.published rfc_date(post.published_on)
       entry.title post.title
       entry.summary post.perex, :type => 'html'
       entry.content post.body,  :type => 'html'
