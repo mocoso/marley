@@ -5,9 +5,9 @@ module Marley
   # = Articles
   # Data source is Marley::Configuration.data_directory (set in <tt>config.yml</tt>)
   class Post
-    
-    attr_reader :id, :title, :perex, :body, :body_html, :meta, :published_on, :updated_on, :published, :comments
-    
+
+    attr_reader :id, :title, :perex, :body, :meta, :published_on, :updated_on, :published, :comments
+
     # comments are referenced via +has_many+ in Comment
     
     def initialize(options={})
@@ -42,7 +42,7 @@ module Marley
     private
     
     def self.find_all(options={})
-      options[:except] ||= ['body', 'body_html']
+      options[:except] ||= ['body']
       posts = []
       self.extract_posts_from_directory(options).each do |file|
         attributes = self.extract_post_info_from(file, options)
@@ -97,8 +97,6 @@ module Marley
                                                                                       not options[:only].include? 'perex'
       post[:body]         = body                                                      unless options[:except].include? 'body' or
                                                                                       not options[:only].include? 'body'
-      post[:body_html]    = RDiscount::new( body ).to_html                            unless options[:except].include? 'body_html' or
-                                                                                      not options[:only].include? 'body_html'
       post[:meta]         = ( meta_content ) ? YAML::load( meta_content.scan( self.regexp[:meta]).to_s ) : 
                                                {} unless options[:except].include? 'meta' or not options[:only].include? 'meta'
                                                                                       not options[:only].include? 'published_on'
