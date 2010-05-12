@@ -126,7 +126,7 @@ get '/' do
 end
 
 get '/feed' do
-  @posts = Marley::Post.published
+  @posts = Marley::Post.published({ :except => [] })
   last_modified( @posts.first.updated_on ) rescue nil    # Conditinal GET, send 304 if not modified
   builder :index
 end

@@ -14,7 +14,7 @@ xml.feed :'xml:lang' => 'en-US', :xmlns => 'http://www.w3.org/2005/Atom' do
       entry.published rfc_date(post.published_on)
       entry.title post.title
       entry.summary post.perex, :type => 'html'
-      entry.content post.body,  :type => 'html'
+      entry.content markup(post.body), :type => 'html'
       entry.author do |author|
         author.name  Marley::Configuration.blog.author || hostname
         author.email(Marley::Configuration.blog.email)  if Marley::Configuration.blog.email
