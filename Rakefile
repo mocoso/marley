@@ -35,8 +35,8 @@ namespace :app do
     desc "Create database for comments"
     task :create_database_for_comments do
       puts "* Creating comments table"
-      dbconfig = YAML.load(File.read('config/database.yml'))
-      ActiveRecord::Base.establish_connection dbconfig['production']
+      dbconfig = YAML.load(File.read('config/database.yml'))[ENV['RACK_ENV'] || 'development']
+      ActiveRecord::Base.establish_connection dbconfig
       load( File.join( MARLEY_ROOT, 'config', 'db_create_comments.rb' ) )
     end
     task :create_sample_article do
@@ -114,7 +114,8 @@ namespace :manage do
     end
 
     task :db_connect do
-      ActiveRecord::Base.establish_connection( :adapter => 'sqlite3', :database => File.join(Marley::Configuration.data_directory, 'comments.db') )
+      dbconfig = YAML.load(File.read('config/database.yml'))[ENV['RACK_ENV'] || 'development']
+      ActiveRecord::Base.establish_connection dbconfig
     end
 
   end

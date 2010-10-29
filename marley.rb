@@ -23,9 +23,8 @@ comment
 
 configure do
   # Establish database connection
-  dbconfig = YAML.load(File.read('config/database.yml'))
-  ActiveRecord::Base.establish_connection dbconfig['production']
-  
+  dbconfig = YAML.load(File.read('config/database.yml'))[ENV['RACK_ENV'] || 'development']
+  ActiveRecord::Base.establish_connection dbconfig
   # Set paths to views and public
   set :views  => Marley::Configuration.theme.views.to_s
   set :public => Marley::Configuration.theme.public.to_s
