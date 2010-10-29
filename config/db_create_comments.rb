@@ -5,7 +5,7 @@ begin
       t.string :post_id, :null => false
       t.string :author, :email, :url, :ip, :referrer , :user_agent, :referrer, :permalink, :comment_type
       t.text   :body
-      t.datetime :created_at, :default => 'NOW()'
+      t.datetime :created_at, :null => false
       t.boolean  :checked, :default => false
       t.boolean  :spam,    :default => false
     end
