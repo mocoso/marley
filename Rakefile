@@ -51,7 +51,7 @@ namespace :app do
 
   desc 'Start application in development'
   task :start do
-    exec "ruby app/marley.rb"
+    exec "ruby marley.rb"
   end
 
   desc "Run tests for the application"
