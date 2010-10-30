@@ -18,7 +18,7 @@ end
 configuration
 post
 comment
-}.each { |f| load_or_require File.join(File.dirname(__FILE__), 'lib', "#{f}.rb") }
+}.each { |f| load_or_require File.join(File.dirname(__FILE__), 'app', 'lib', "#{f}.rb") }
 
 # -----------------------------------------------------------------------------
 
