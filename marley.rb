@@ -1,11 +1,10 @@
 MARLEY_ROOT = File.join(File.expand_path(File.dirname(__FILE__)), '') unless defined?(MARLEY_ROOT)
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '', 'vendor')
 
-require 'rubygems'
 require 'ftools'
 require 'yaml'
+require 'active_record'
 require 'sinatra'
-require 'activerecord'
 require 'rdiscount'
 require 'akismetor'
 require 'githubber'

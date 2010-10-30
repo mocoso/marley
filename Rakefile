@@ -1,5 +1,9 @@
 require 'rubygems'
-require 'activerecord'
+require 'bundler'
+
+Bundler.require
+
+require 'active_record'
 require 'rake'
 require 'ftools'
 
